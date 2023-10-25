@@ -1,8 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -13,12 +11,7 @@ import pages.WikiPage;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.WebDriverConditions.url;
+
 
 public class WebTest extends TestBase{
     WikiPage wikiPage = new WikiPage();
@@ -53,14 +46,13 @@ public class WebTest extends TestBase{
                 Arguments.of(Language.Українська, List.of("Читати", "Переглянути код", "Переглянути історію"))
         );
     }
-    @MethodSource
+    @MethodSource("languageTabTest")
     @ParameterizedTest
+    @Tag("Language")
     void languageTabTest(Language language, List<String> expectedTab){
         wikiPage.openPage();
         wikiPage.checkLanguage(language.name());
         wikiPage.checkLanguageTab(expectedTab);
-
-
     }
 
 }

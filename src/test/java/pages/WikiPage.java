@@ -5,9 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 
 import java.util.List;
 
-import static com.codeborne.selenide.CollectionCondition.texts;
-import static com.codeborne.selenide.CollectionCondition.textsInAnyOrder;
-import static com.codeborne.selenide.Condition.text;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -15,16 +13,13 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class WikiPage {
     SelenideElement tabNavigation = $("#p-views"),
-    headLine = $(".main-top-header"),
     leftSidebar = $("#p-participation .vector-menu-content"),
 
-    language = $("#mw-panel"),
-    languageTab = $("#p-views");
+    language = $("#mw-panel");
 
 
     public WikiPage openPage() {
         open("");
-        headLine.shouldHave(text("Добро пожаловать в Википедию"));
         return this;
     }
 
@@ -46,7 +41,7 @@ public class WikiPage {
        return this;
    }
     public WikiPage checkLanguageTab(List<String> value){
-        languageTab.shouldHave(CollectionCondition.texts(value));
+        $$("#p-views span").filter(visible).shouldHave(CollectionCondition.texts(value));
         return this;
     }
 

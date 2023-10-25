@@ -9,6 +9,13 @@ repositories {
     mavenCentral()
 }
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation (
             'org.junit.jupiter:junit-jupiter:5.10.0',
@@ -17,4 +24,26 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+// Задача для запуска тестов с тегом "Tab"
+tasks.register('Tab', Test) {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+    useJUnitPlatform {
+        includeTags("Tab")
+    }
+}
+
+// Задача для запуска тестов с тегом "Language"
+tasks.register('Language', Test) {
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+        exceptionFormat "full"
+    }
+    useJUnitPlatform {
+        includeTags("Language")
+    }
 }
