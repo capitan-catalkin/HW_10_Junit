@@ -24,16 +24,16 @@ public class WebTest extends TestBase{
     })
     @Tag("Tab")
     @ParameterizedTest(name = "При нажатии на вкладку {0} открывается страница {1}")
-    void openLink( String tab, String urlPage){
+    void openLinkTest( String tab, String urlPage){
         wikiPage.openPage();
         wikiPage.pressTab(tab);
         wikiPage.checkUrl(urlPage);
     }
 
     @CsvFileSource(resources = "/testData.csv")
-    @ParameterizedTest
+    @ParameterizedTest(name = "При нажатии на вкладку {0} открывается страница {1}")
     @Tag("Tab")
-    void leftSidebar(String tab, String urlPage){
+    void leftSidebarTest(String tab, String urlPage){
         wikiPage.openPage();
         wikiPage.checkLeftSidebar(tab);
         wikiPage.checkUrl(urlPage);
@@ -47,7 +47,7 @@ public class WebTest extends TestBase{
         );
     }
     @MethodSource("languageTabTest")
-    @ParameterizedTest
+    @ParameterizedTest(name = "При выборе языка {0} кнопки имеют название {1}")
     @Tag("Language")
     void languageTabTest(Language language, List<String> expectedTab){
         wikiPage.openPage();
