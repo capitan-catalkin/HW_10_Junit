@@ -41,7 +41,7 @@ public class WebTest extends TestBase{
 
     static Stream<Arguments> languageTabTest(){
         return Stream.of(
-                Arguments.of(Language.Italiano, List.of("Leggi", "Visualizza sorgente", "Cronologia")),
+                Arguments.of(Language.ITALIANO, List.of("Leggi", "Visualizza sorgente", "Cronologia")),
                 Arguments.of(Language.English, List.of("Read", "View source", "View history")),
                 Arguments.of(Language.Українська, List.of("Читати", "Переглянути код", "Переглянути історію"))
         );

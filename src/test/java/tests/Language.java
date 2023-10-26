@@ -1,5 +1,5 @@
 package tests;
 
 public enum Language {
-    Italiano, English, Українська
+    ITALIANO, English, Українська
 }
