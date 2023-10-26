@@ -42,8 +42,8 @@ public class WebTest extends TestBase{
     static Stream<Arguments> languageTabTest(){
         return Stream.of(
                 Arguments.of(Language.ITALIANO, List.of("Leggi", "Visualizza sorgente", "Cronologia")),
-                Arguments.of(Language.English, List.of("Read", "View source", "View history")),
-                Arguments.of(Language.Українська, List.of("Читати", "Переглянути код", "Переглянути історію"))
+                Arguments.of(Language.ENGLISH, List.of("Read", "View source", "View history")),
+                Arguments.of(Language.UKRAINIAN, List.of("Читати", "Переглянути код", "Переглянути історію"))
         );
     }
     @MethodSource("languageTabTest")
@@ -51,7 +51,7 @@ public class WebTest extends TestBase{
     @Tag("Language")
     void languageTabTest(Language language, List<String> expectedTab){
         wikiPage.openPage();
-        wikiPage.checkLanguage(language.name());
+        wikiPage.checkLanguage(language.getName());
         wikiPage.checkLanguageTab(expectedTab);
     }
 
